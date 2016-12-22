@@ -1,0 +1,58 @@
+// Place all the styles related to the brightideas controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+#create_idea_input{
+	display: inline-block;
+	width: 400px;
+}
+
+.all_listed_ideas{
+	display: block;
+	margin: 10px;
+	padding:15px;
+}
+	.all_listed_ideas *{
+		margin: 3px;
+	}
+	.all_listed_ideas_one{
+		display: block;
+	}
+		.all_listed_ideas_one *{
+			display: inline-block;
+		}
+		.all_listed_ideas_one p{
+			border: 1px solid black;
+			padding: 5px 10px;
+			width: 300px;
+		}
+	.all_listed_ideas_two{
+		display: block;
+		margin-left:100px;
+	}
+		.all_listed_ideas_two *{
+			display: inline-block;
+		}
+
+// Idea Show page
+
+#the_idea_show{
+	display: block;
+}
+	#the_idea_show *{
+		display: inline-block;
+	}
+	#the_idea_show p{
+		border: 1px solid black;
+		padding: 5px 10px;
+		width: 300px;
+	}
+table{
+	border: 1px solid black;
+	width: 250px;
+}
+thead{
+	background-color: gray;
+}
+tr:nth-child(even) {
+    background-color: #EBEBEB;
+}

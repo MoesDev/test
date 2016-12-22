@@ -1,0 +1,46 @@
+<html>
+<head>
+	<title>Profile Page</title>
+</head>
+<body>
+	<div class="top_bar">
+		<H4><%= @user.first_name %>'s Profile</H4>
+		<a href="/brightideas">Bright Ideas</a>
+		<% if @user.id == session[:user_id] %>
+			<a href="/users/edit">Edit Profile</a>	
+		<% end %>
+		<a href="/sessions/logout">Logout</a>
+	</div>
+
+
+	<div id="profile_info">
+		<table>
+			<tr>
+				<th>Name: </th>
+				<td><%= @user.first_name %></td>
+			</tr>
+			<tr>
+				<th>Alias: </th>
+				<td><%= @user.last_name %></td>
+			</tr>
+			<tr>
+				<th>Email: </th>
+				<td><%= @user.email %></td>
+			</tr>
+		</table>
+	</div>
+
+	<div id="line"> </div>
+
+	<div id="user_totals">
+		<p>Total Number of Posts: <%= @posts %></p>
+		<p>Total Number of Likes: <%= @likes %></p>
+
+	</div>
+	<% if @user.id == session[:user_id] %>
+		<a href="/users/<%= @user.id %>" data-method="delete">Delete Account</a>
+	<% end %>
+	
+
+</body>
+</html>

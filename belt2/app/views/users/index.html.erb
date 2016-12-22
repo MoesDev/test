@@ -1,0 +1,58 @@
+<html>
+<head>
+	<title>Hunting Forum</title>
+</head>
+<body>
+	<div id="welcome_bar">
+		<h1>Welcome</h1>
+		<%= flash[:user_out] %>
+	</div>
+	<div id="profile_create">
+		<H3>Register</H3>
+		<form action="/users" method="post">
+		<input name="authenticity_token" value= "<%=form_authenticity_token %>" type="hidden">
+			<table>
+				<tr>
+					<th>Name</th>
+					<td><input type="text" name="user[first_name]"> </td>
+				</tr>
+				<tr>
+					<th>Alias </th>
+					<td><input type="text" name="user[last_name]"></td>
+				</tr>
+				<tr>
+					<th>Email</th>
+					<td><input type="text" name="user[email]"></td>
+				</tr>
+				<tr>
+					<th>Password</th>
+					<td><input type="password" name="user[password]"></td>
+				</tr>
+				<tr>
+					<th>Confirm Password</th>
+					<td><input type="password" name="user[password_confirmation]"></td>
+				</tr>
+			</table>
+			<input type="submit" value="Register">
+		</form>
+	
+		<% if flash[:user_create_error] %>
+			<% flash[:user_create_error].each do |f| %>
+				<h5> - <%= f %> </h5>
+			<% end %>
+		<% end %>
+	</div>
+
+	<div id="login_section">
+		<H3>Login</H3>
+		<form action="/sessions/create_login_user" method="post">
+			<input name="authenticity_token" value= "<%=form_authenticity_token %>" type="hidden">
+			<input type="text" name="email">
+			<input type="password" name="password">
+			<input type="submit" value= "Login">
+		</form>
+		<%= flash[:errors] %>
+	</div>	
+
+</body>
+</html>

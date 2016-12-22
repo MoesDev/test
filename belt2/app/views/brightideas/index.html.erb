@@ -1,0 +1,39 @@
+<a href="/sessions/logout">LogOut</a>
+<h1>Hi <a href="/users/<%= @user.id %>">
+	<%= @user.first_name.capitalize %></a>!</h1>
+
+<div id="idea_create">
+		<form action="/brightideas" method="post">
+		<input name="authenticity_token" value= "<%=form_authenticity_token %>" type="hidden">
+			<input id="create_idea_input" type="text" name="idea" placeholder="Post something witty here...">
+			<input type="submit" value="Idea!">
+		</form>
+	
+		<% if flash[:errors] %>
+			<% flash[:errors].each do |f| %>
+				<h5> - <%= f %> </h5>
+			<% end %>
+		<% end %>
+	</div>
+
+
+
+<% @ideas.each do |idea| %>
+<div class= "all_listed_ideas">
+	<div class= "all_listed_ideas_one">
+	<h5><a href="/users/<%= idea.user.id %>"><%= idea.user.first_name.capitalize %></a> says: </h5>
+	<p><%= idea.idea %></p>
+		<% if idea.user_id == session[:user_id] %>
+		<a href="/brightideas/<%= idea.id %>" data-method="delete">Delete</a>
+		<% end %>
+	</div>
+	<div class= "all_listed_ideas_two">
+		<% if Like.where(user: User.find(session[:user_id]), brightidea: Brightidea.find( idea.id )).count > 0 %>
+			<a href="brightideas/unlike/<%= idea.id %>"data-method="delete">Unlike</a>
+		<% else %>
+			<a href="brightideas/like/<%= idea.id %>"data-method="post">Like</a>
+		<% end %>	
+		<p><a href="/brightideas/<%= idea.id %>"><%= idea.likes.count %> people</a> like this.</p>
+	</div>
+</div>
+<% end %>

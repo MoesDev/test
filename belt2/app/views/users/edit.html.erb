@@ -1,0 +1,43 @@
+<html>
+<head>
+	<title>Edit <%= @user.first_name %>'s Profile</title>
+</head>
+<body>
+	<H1>Edit <%= @user.first_name %>'s Profile</H1>
+
+	<div id="profile_edit">
+		<form action="/users/<%= @user.id %>" method="post">
+		<input name="authenticity_token" value= "<%=form_authenticity_token %>" type="hidden">
+		<input type="hidden" name="_method" value="patch">
+		<input type="hidden" name="update" value="update_profile">
+			<table>
+				<tr>
+					<th>First Name</th>
+					<td><input type="text" name="user[first_name]" value="<%= @user.first_name %>"> </td>
+				</tr>
+				<tr>
+					<th>Last Name </th>
+					<td><input type="text" name="user[last_name]" value="<%= @user.last_name %>"></td>
+				</tr>
+				<tr>
+					<th>Email</th>
+					<td><input type="text" name="user[email]" value="<%= @user.email %>"></td>
+				</tr>
+				<tr>
+					<th>Current Password</th>
+					<td><input type="password" name="password" placeholder="Enter Current Password"></td>
+				</tr>
+			</table>
+			<p>Must enter Current Password to make profile changes</p>
+			<input type="submit" value="Update Profile">
+		</form>
+	</div>
+		<% if flash[:update_error] %>
+			<% flash[:update_error].each do |f| %>
+				<h5> - <%= f %></h5>
+			<% end %>
+		<% end %>
+	<a href="/users/<%= @user.id %>">Cancel Update</a>
+
+</body>
+</html>

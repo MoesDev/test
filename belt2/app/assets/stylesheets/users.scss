@@ -1,0 +1,43 @@
+// Place all the styles related to the Users controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+#welcome_bar{
+	display: block;
+}
+.top_bar{
+	display: block;
+	text-align: right;
+}
+#the_idea_show{
+	display: block;
+}
+#idea_show_ppl_liked{
+	display:block;
+}
+
+#profile_create{
+	display: inline-block;
+	width: 300px;
+	margin:10px;
+	padding: 15px;
+	border: 1px solid black;
+}
+
+#login_section{
+	display: inline-block;
+	width: 300px;
+	margin: 10px;	
+	padding: 15px;
+	border: 1px solid black;
+	vertical-align: top;
+}
+#line{
+	margin: 10px 0px;
+	display: block;
+	border-bottom: 1px black solid;
+}
+#user_totals{
+	display: block;
+	margin-bottom: 25px;
+}

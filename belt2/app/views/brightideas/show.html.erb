@@ -1,0 +1,35 @@
+<div class="top_bar">
+	<a href="/brightideas">Bright Ideas</a>
+	<a href="/sessions/logout">Logout</a>
+</div>
+
+<div id="the_idea_show">
+	<h5><a href="/users/<%= @idea.user.id %>"><%= @idea.user.first_name.capitalize %></a> says: </h5>
+	<p><%= @idea.idea %></p>
+		<% if @idea.user_id == session[:user_id] %>
+		<a href="/brightideas/<%= @idea.id %>" data-method="delete">Delete</a>
+		<% end %>
+</div>
+
+<div id="idea_show_ppl_liked">
+	<h4>People who liked this post: </h4>
+
+	<table>
+		<thead>
+			<tr>
+				<th>Alias</th>
+				<th>Name</th>
+			</tr>
+		</thead>
+		<tbody>
+			<% @likes.each do |like| %>
+			<tr>
+				<td><a href="/users/<%= like.user.id %>"><%= like.user.last_name %></a></td>
+				<td><%= like.user.first_name %></td>
+			</tr>
+			<% end %>
+		</tbody>
+	</table>
+	
+
+</div>
